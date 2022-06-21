@@ -30,7 +30,10 @@ extension playSoundsViewController: AVAudioPlayerDelegate {
     
     // MARK: PlayingState (raw values correspond to sender tags)
     
-    enum PlayingState { case playing, notPlaying }
+    enum PlayingState {
+        case playing, notPlaying
+        
+    }
     
     // MARK: Audio Functions
     

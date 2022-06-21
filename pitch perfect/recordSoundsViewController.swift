@@ -7,7 +7,7 @@
 
 import UIKit
 import AVFoundation
-var audioPlayer: AVAudioPlayer!
+var audioPlayer: AVAudioPlayer! //stackexchange help
 
 class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
@@ -23,6 +23,7 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopRecordingButton.isEnabled = false
     }
 
+//MARK: configuring UI using Bool
     func configureUI(setMessage labelText: String, enableRecordButton isRecordButtonEnabled: Bool, enableStopRecordButton isStopRecordButtonEnabled: Bool) {
         recordingLabel.text = labelText
         recordingButton.isEnabled = isRecordButtonEnabled
@@ -31,11 +32,9 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear called")
     }
 
     @IBAction func recordAudio(_ sender: Any) {
-        print("record pressed")
         recordingLabel.text = "recording in progress"
         stopRecordingButton.isEnabled = true
         recordingButton.isEnabled = false
@@ -60,7 +59,6 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
 
     @IBAction func stopRecording(_ sender: Any) {
-        print("stop recording pressed")
         recordingButton.isEnabled = true
         stopRecordingButton.isEnabled = false
         recordingLabel.text = "tap to record"
@@ -71,7 +69,6 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        print("finished recording")
         performSegue(withIdentifier: "stopRecordingButton", sender: audioRecorder.url)
     }
     
