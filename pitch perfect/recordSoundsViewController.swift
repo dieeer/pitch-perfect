@@ -31,9 +31,6 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
        }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
 
     @IBAction func recordAudio(_ sender: Any) {
         recordingLabel.text = "recording in progress"
@@ -56,6 +53,7 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
            audioRecorder.isMeteringEnabled = true
            audioRecorder.prepareToRecord()
            audioRecorder.record()
+        configureUI(isRecording: true)
     }
 
 
@@ -64,6 +62,7 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopRecordingButton.isEnabled = false
         recordingLabel.text = "tap to record"
         audioRecorder.stop()
+        configureUI(isRecording: false)
         
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
