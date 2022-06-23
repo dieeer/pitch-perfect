@@ -24,12 +24,13 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
 
 //MARK: configuring UI using Bool
-    func configureUI(setMessage labelText: String, enableRecordButton isRecordButtonEnabled: Bool, enableStopRecordButton isStopRecordButtonEnabled: Bool) {
-        recordingLabel.text = labelText
-        recordingButton.isEnabled = isRecordButtonEnabled
-        stopRecordingButton.isEnabled = isStopRecordButtonEnabled
-        
-    }
+    func configureUI(isRecording: Bool) {
+           stopRecordingButton.isEnabled = isRecording // to disable
+           recordingButton.isEnabled = !isRecording // to enable
+           recordingLabel.text = !isRecording ? "tap to record" : "recording in progress"
+
+       }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
